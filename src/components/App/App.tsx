@@ -1,4 +1,3 @@
-import ClassComponent from "../ClassComponent";
 import TestComponents from "../TestComponent";
 import "./App.css";
 import logo from "./logo.svg";
@@ -10,7 +9,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <TestComponents name="Warlley" />
 
-        <ClassComponent name="Mundo" />
+        {/* <ClassComponent name="Mundo" /> */}
 
         <a
           className="App-link"
