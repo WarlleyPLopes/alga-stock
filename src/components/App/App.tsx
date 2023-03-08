@@ -1,7 +1,13 @@
 import "./App.css";
+import Header from "./Header";
 
 function App() {
-  return <div className="App">App</div>;
+  return (
+    <div className="App">
+      <Header title="AlgaStock" />
+      App
+    </div>
+  );
 }
 
 export default App;
