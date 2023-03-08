@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <TestComponents />
+        <TestComponents name="Warlley" />
 
         <ClassComponent name="Mundo" />
 
