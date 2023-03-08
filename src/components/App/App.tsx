@@ -1,4 +1,5 @@
-import "./App.css";
+import TestComponents from "../TestComponent";
+import "./App";
 import logo from "./logo.svg";
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Olá, mundo!</p>
+        <TestComponents />
         <a
           className="App-link"
           href="https://reactjs.org"
