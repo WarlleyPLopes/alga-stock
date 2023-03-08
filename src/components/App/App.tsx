@@ -1,5 +1,6 @@
+import ClassComponent from "../ClassComponent";
 import TestComponents from "../TestComponent";
-import "./App";
+import "./App.css";
 import logo from "./logo.svg";
 
 function App() {
@@ -8,6 +9,9 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <TestComponents />
+
+        <ClassComponent name="Mundo" />
+
         <a
           className="App-link"
           href="https://reactjs.org"
