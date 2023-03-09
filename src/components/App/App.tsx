@@ -1,6 +1,4 @@
-import Button from "../../shared/Button";
 import Container from "../../shared/Container";
-import Input from "../../shared/Input";
 import Header from "../Header";
 import "./App.css";
 
@@ -15,24 +13,20 @@ function TesteComponent() {
 }
 
 function App() {
-  const [street, setStreet] = useState('')
-
   return (
     <div className="App">
       <Header title="AlgaStock" />
+      
       <Container>
-        <Button
-          onClick={() => window.alert("você clicou!")}
-          appendIcon={<TesteComponent />}
-        >
-          Alert
-        </Button>
-        <Input
-          label="Street"
-          placeholder="E.g.: 15h Avenue"
-          value={street}
-          onChange={e => setStreet(e.target.value)}
-        />
+        <ul>
+          {
+            ['Warlley', 'Daniel', 'Marcos', 'Daniel'].map((name,idx) => {
+              return <li key={idx}>
+                { name }
+              </li>
+            })
+          }
+        </ul>
       </Container>
     </div>
   );
