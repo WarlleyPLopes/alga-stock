@@ -1,24 +1,34 @@
-//import './Table.scss';
+import './Table.scss'
 
 const Table = () => {
-  return <table>
+  return <table className='AppTable'>
     <thead>
       <tr>
         <th>Product</th>
         <th>Price</th>
-        <th>Stock</th>
+        <th className='rigth'>Stock</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>Cookie</td>
         <td>$1.25</td>
-        <td>23</td>
+        <td className='rigth'>23</td>
       </tr>
       <tr>
         <td>Milk</td>
         <td>$0.99</td>
-        <td>10</td>
+        <td className='rigth'>10</td>
+      </tr>
+      <tr>
+        <td>Cookie</td>
+        <td>$1.25</td>
+        <td className='rigth'>23</td>
+      </tr>
+      <tr>
+        <td>Milk</td>
+        <td>$0.99</td>
+        <td className='rigth'>10</td>
       </tr>
     </tbody>
   </table>
