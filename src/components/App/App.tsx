@@ -1,4 +1,7 @@
+import Button from "../../shared/Button";
 import Container from "../../shared/Container";
+import Form from "../../shared/Form";
+import Input from "../../shared/Input";
 import Table, { TableHeader } from "../../shared/Table";
 import Products from "../../shared/Table/Table.mockdata";
 import Header from "../Header";
@@ -20,6 +23,27 @@ function App() {
           headers={headers}
           data={Products}
         />
+        <Form title="Product form" onSubmit={console.log}>
+          <Input
+            label="Name"
+            placeholder="E.g.: Cookie"
+          />
+          <Input
+            label="Price"
+            type='number'
+            step='0.1'
+            placeholder="E.g.: 1.25"
+          />
+          <Input
+            label="Stock"
+            type='number'
+            min='0'
+            placeholder="E.g.: 15"
+          />
+          <Button>
+            Submit
+          </Button>
+        </Form>
       </Container>
     </div>
   );
