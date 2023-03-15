@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-
 import Button from '../../shared/Button'
 import Form from '../../shared/Form'
 import Input from '../../shared/Input'
@@ -24,7 +23,7 @@ declare interface ProductFormProps {
   onUpdate?: (product: Product) => void
 }
 
-const ProductForm: React.FC<ProductFormProps> = (props) => {
+function ProductForm(props: ProductFormProps) {
   const initialFormState: InitialFormState = props.form
     ? {
       id: props.form.id,
@@ -44,7 +43,7 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
     setForm(initialFormState)
   }, [props.form])
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { value, name } = event.target
 
     setForm({
@@ -53,7 +52,7 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
     })
   }
 
-  const updateProduct = (product: InitialFormState) => {
+  function updateProduct(product: InitialFormState) {
     const productDto = {
       id: Number(product.id),
       name: String(product.name),
@@ -76,7 +75,7 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
       props.onSubmit(productDto)
   }
 
-  const handleFormSubmit = () => {
+  function handleFormSubmit() {
     form.id
       ? updateProduct(form)
       : createProduct(form)

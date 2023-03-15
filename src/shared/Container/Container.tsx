@@ -1,6 +1,6 @@
 import "./Container.css";
 
-const Conteiner: React.FC<{ children: JSX.Element | JSX.Element[] }> = (props) => {
+function Conteiner(props: { children: JSX.Element | JSX.Element[] }) {
   return <div className="AppContainer">
     {props.children}
   </div>;

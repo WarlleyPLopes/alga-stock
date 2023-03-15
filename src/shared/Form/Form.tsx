@@ -1,3 +1,4 @@
+import React from 'react';
 import './Form.scss';
 
 declare interface FormProps {
@@ -7,8 +8,8 @@ declare interface FormProps {
 
 }
 
-const Form: React.FC<FormProps> = (props) => {
-  const preventedSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+function Form(props: FormProps) {
+  function preventedSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     props.onSubmit && props.onSubmit(event)
 

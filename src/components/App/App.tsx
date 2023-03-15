@@ -18,7 +18,7 @@ function App() {
   const [products, setProducts] = useState(Products)
   const [updatingProduct, setUpdatingProduct] = useState<Product | undefined>(products[0])
 
-  const handleProductSubmit = (product: ProductCreator) => {
+  function handleProductSubmit(product: ProductCreator) {
     setProducts([
       ...products,
       {
@@ -28,7 +28,7 @@ function App() {
     ])
   }
 
-  const handleProductUpdate = (newProduct: Product) => {
+  function handleProductUpdate(newProduct: Product) {
     setProducts(products.map(product =>
       product.id === newProduct.id
         ? newProduct
@@ -38,11 +38,11 @@ function App() {
     setUpdatingProduct(undefined)
   }
 
-  const deleteProduct = (id: number) => {
+  function deleteProduct(id: number) {
     setProducts(products.filter(product => product.id !== id))
   }
 
-  const handleProductDelete = (product: Product) => {
+  function handleProductDelete(product: Product) {
     Swal
       .fire({
         title: 'Are you sure?',
@@ -65,7 +65,7 @@ function App() {
       })
   }
 
-  const handleProductDetail = (product: Product) => {
+  function handleProductDetail(product: Product) {
     Swal.fire(
       'Product details',
       `${product.name} costs $${product.price} and we have ${product.stock} available in stock.`,
@@ -73,7 +73,7 @@ function App() {
     )
   }
 
-  const handleProductEdit = (product: Product) => {
+  function handleProductEdit(product: Product) {
     setUpdatingProduct(product)
   }
 

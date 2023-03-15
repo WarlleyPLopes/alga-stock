@@ -6,7 +6,7 @@ table.AppTable {
   thead {
     background-color: #09f;
     tr th {
-      color: rgba($color: #fff, $alpha: 0.8);
+      color: rgba(#fff, 0.8);
       text-align: left;
       padding: 7px 10px;
       font-size: 0.8em;
@@ -14,7 +14,7 @@ table.AppTable {
       text-transform: uppercase;
       letter-spacing: 0.75px;
 
-      &.rigth {
+      &.right {
         text-align: right;
       }
     }
@@ -28,7 +28,7 @@ table.AppTable {
         padding: 7px 10px;
         color: #222;
 
-        &.rigth {
+        &.right {
           text-align: right;
         }
       }

@@ -1,4 +1,3 @@
-import React from "react";
 import "./Button.css";
 
 declare interface ButtonProps {
@@ -8,9 +7,12 @@ declare interface ButtonProps {
   children: string;
 }
 
-const Button: React.FC<ButtonProps> = (props) => {
+function Button(props: ButtonProps) {
   return (
-    <button className="AppButton" onClick={props.onClick}>
+    <button
+      className="AppButton"
+      onClick={props.onClick}
+    >
       {props.children || "Nameless button"}
       {props.appendIcon}
     </button>
