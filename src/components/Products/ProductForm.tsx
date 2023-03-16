@@ -5,7 +5,7 @@ import Input from '../../shared/Input'
 import { Product } from '../../shared/Table/Table.mockdata'
 
 declare interface InitialFormState {
-  id?: number
+  _id?: string
   name: string
   price: string
   stock: string
@@ -26,7 +26,7 @@ declare interface ProductFormProps {
 function ProductForm(props: ProductFormProps) {
   const initialFormState: InitialFormState = props.form
     ? {
-      id: props.form.id,
+      _id: props.form._id,
       name: props.form.name,
       price: String(props.form.price),
       stock: String(props.form.stock),
@@ -54,7 +54,7 @@ function ProductForm(props: ProductFormProps) {
 
   function updateProduct(product: InitialFormState) {
     const productDto = {
-      id: Number(product.id),
+      _id: String(product._id),
       name: String(product.name),
       price: parseFloat(product.price),
       stock: Number(product.stock)
@@ -76,7 +76,7 @@ function ProductForm(props: ProductFormProps) {
   }
 
   function handleFormSubmit() {
-    form.id
+    form._id
       ? updateProduct(form)
       : createProduct(form)
 
@@ -115,7 +115,7 @@ function ProductForm(props: ProductFormProps) {
     />
     <Button>
       {
-        form.id ? 'Update' : 'Submit'
+        form._id ? 'Update' : 'Submit'
       }
     </Button>
   </Form>

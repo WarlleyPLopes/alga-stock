@@ -52,7 +52,7 @@ function Table(props: TableProps) {
                 .map((item, i) =>
                   item !== '$original'
                     ? <td
-                      key={row.$original.id + i}
+                      key={row.$original._id + i}
                       className={indexedHeaders[item].right ? 'right' : ''}
                     >
                       {row[item]}
@@ -68,7 +68,7 @@ function Table(props: TableProps) {
                 {
                   props.onEdit &&
                   <Button
-                    onClick={() => props.onEdit && props.onEdit(row)}
+                    onClick={() => props.onEdit && props.onEdit(row.$original)}
                   >
                     Edit
                   </Button>
@@ -76,7 +76,7 @@ function Table(props: TableProps) {
                 {
                   props.onDetail &&
                   <Button
-                    onClick={() => props.onDetail && props.onDetail(row)}
+                    onClick={() => props.onDetail && props.onDetail(row.$original)}
                   >
                     Detail
                   </Button>
@@ -84,7 +84,7 @@ function Table(props: TableProps) {
                 {
                   props.onDelete &&
                   <Button
-                    onClick={() => props.onDelete && props.onDelete(row)}
+                    onClick={() => props.onDelete && props.onDelete(row.$original)}
                   >
                     Delete
                   </Button>
