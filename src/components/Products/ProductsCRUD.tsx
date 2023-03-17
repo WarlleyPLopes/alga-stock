@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import Swal from 'sweetalert2'
+import { insertNewProduct } from '../../redux/Products/Products.actions'
 import {
-  createSingleProduct,
   deleteSingleProduct,
   updateSingleProduct
 } from '../../services/Products.service'
@@ -23,6 +23,7 @@ declare interface ProductsCRUDProps {
 }
 
 function ProductsCRUD(props: ProductsCRUDProps) {
+  const dispatch = useDispatch()
   // const [products, setProducts] = useState<Product[]>([])
   const [updatingProduct, setUpdatingProduct] = useState<Product | undefined>(undefined)
 
@@ -37,7 +38,7 @@ function ProductsCRUD(props: ProductsCRUDProps) {
 
   async function handleProductSubmit(product: ProductCreator) {
     try {
-      await createSingleProduct(product)
+      dispatch(insertNewProduct(product))
       fetchData()
     } catch (err) {
       if (err instanceof Error)
