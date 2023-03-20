@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import Swal from 'sweetalert2'
-import { getProducts, insertNewProduct } from '../../redux/Products/Products.actions'
-import {
-  deleteSingleProduct,
-  updateSingleProduct
-} from '../../services/Products.service'
+import { RootState } from '../../redux'
+import * as ProductsAction from '../../redux/Products/Products.actions'
 import Table, { TableHeader } from "../../shared/Table"
 import { Product } from '../../shared/Table/Table.mockdata'
 import ProductForm, { ProductCreator } from './ProductForm'
@@ -29,10 +26,10 @@ function ProductsCRUD(props: ProductsCRUDProps) {
 
   async function fetchData() {
     try {
-      await dispatch(getProducts())
-      Swal.fire('Uhu!', 'fetch done', 'success')
+      await dispatch(ProductsAction.getProducts())
     } catch (err) {
-      Swal.fire('Oops!', err.message, 'error')
+      if (err instanceof Error)
+        Swal.fire('Oops!', err.message, 'error')
     }
   }
 
@@ -42,8 +39,7 @@ function ProductsCRUD(props: ProductsCRUDProps) {
 
   async function handleProductSubmit(product: ProductCreator) {
     try {
-      dispatch(insertNewProduct(product))
-      fetchData()
+      dispatch(ProductsAction.insertNewProduct(product))
     } catch (err) {
       if (err instanceof Error)
         Swal.fire('Oops!', err.message, 'error')
@@ -52,9 +48,8 @@ function ProductsCRUD(props: ProductsCRUDProps) {
 
   async function handleProductUpdate(newProduct: Product) {
     try {
-      await updateSingleProduct(newProduct)
+      await dispatch(ProductsAction.updateProduct(newProduct))
       setUpdatingProduct(undefined)
-      fetchData()
     } catch (err) {
       if (err instanceof Error)
         Swal.fire('Oops!', err.message, 'error')
@@ -64,8 +59,7 @@ function ProductsCRUD(props: ProductsCRUDProps) {
 
   async function deleteProduct(id: string) {
     try {
-      await deleteSingleProduct(id)
-      fetchData()
+      await dispatch(ProductsAction.deleteProduct(id))
       Swal.fire('Uhul!', 'Product successfully deleted', 'success')
     } catch (err) {
       if (err instanceof Error)
@@ -121,7 +115,7 @@ function ProductsCRUD(props: ProductsCRUDProps) {
   </>
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootState) => ({
   products: state.products
 })
 
