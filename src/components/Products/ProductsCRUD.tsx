@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import Swal from 'sweetalert2'
-import { insertNewProduct } from '../../redux/Products/Products.actions'
+import { getProducts, insertNewProduct } from '../../redux/Products/Products.actions'
 import {
   deleteSingleProduct,
   updateSingleProduct
@@ -28,8 +28,7 @@ function ProductsCRUD(props: ProductsCRUDProps) {
   const [updatingProduct, setUpdatingProduct] = useState<Product | undefined>(undefined)
 
   async function fetchData() {
-    /* const _products = await getAllProducts()
-    setProducts(_products) */
+    dispatch(getProducts())
   }
 
   useEffect(() => {
