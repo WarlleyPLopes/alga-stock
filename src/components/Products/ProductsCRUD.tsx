@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import Swal from 'sweetalert2'
 import { RootState, ThunkDispatch } from '../../redux'
@@ -20,7 +20,7 @@ declare interface ProductsCRUDProps {
   products: Product[]
 }
 
-const ProductsCRUD: React.FC<ProductsCRUDProps> = (props) => {
+function ProductsCRUD(props: ProductsCRUDProps) {
   const dispatch: ThunkDispatch = useDispatch()
 
   const showErrorAlert =
