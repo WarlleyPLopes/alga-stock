@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+
 import Button from '../../shared/Button'
 import Form from '../../shared/Form'
 import Input from '../../shared/Input'
 import { Product } from '../../shared/Table/Table.mockdata'
+import withPermission from '../../utils/HOC/withPermission'
 
 declare interface InitialFormState {
   _id?: string
@@ -23,7 +25,7 @@ declare interface ProductFormProps {
   onUpdate?: (product: Product) => void
 }
 
-function ProductForm(props: ProductFormProps) {
+const ProductForm: React.FC<ProductFormProps> = (props) => {
   const initialFormState: InitialFormState = props.form
     ? {
       _id: props.form._id,
@@ -43,7 +45,7 @@ function ProductForm(props: ProductFormProps) {
     setForm(initialFormState)
   }, [props.form])
 
-  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target
 
     setForm({
@@ -52,7 +54,7 @@ function ProductForm(props: ProductFormProps) {
     })
   }
 
-  function updateProduct(product: InitialFormState) {
+  const updateProduct = (product: InitialFormState) => {
     const productDto = {
       _id: String(product._id),
       name: String(product.name),
@@ -75,7 +77,7 @@ function ProductForm(props: ProductFormProps) {
       props.onSubmit(productDto)
   }
 
-  function handleFormSubmit() {
+  const handleFormSubmit = () => {
     form._id
       ? updateProduct(form)
       : createProduct(form)
@@ -121,4 +123,4 @@ function ProductForm(props: ProductFormProps) {
   </Form>
 }
 
-export default ProductForm
+export default withPermission(['customer', 'admin'])(ProductForm)

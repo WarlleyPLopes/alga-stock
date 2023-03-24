@@ -1,19 +1,22 @@
+// @ts-nocheck
+import React from 'react'
 import { connect } from 'react-redux'
-import ProfileCard, { User } from '../Authentication/ProfileCard'
+import ProfileCard, { User } from '../components/Authentication/ProfileCard'
 import Header from '../components/Header'
 import Container from '../shared/Container'
+import withPermission from '../utils/HOC/withPermission'
 
 declare interface ProfileViewProps {
   user: User
 }
 
-function ProfileView(props: ProfileViewProps) {
+const ProfileView: React.FC<ProfileViewProps> = (props) => {
   return <>
     <Header title="AlgaStock" />
     <Container>
       <div style={{
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
       }}>
         <ProfileCard user={props.user} />
       </div>
@@ -23,9 +26,11 @@ function ProfileView(props: ProfileViewProps) {
 
 const mapStateToProps = () => ({
   user: {
-    name: 'Warlley Lopes',
-    email: 'warlley@algastock.com'
+    name: 'Daniel Bonifacio',
+    email: 'daniel.bonifacio@algaworks.com'
   }
 })
 
-export default connect(mapStateToProps)(ProfileView)
+export default connect(mapStateToProps)(
+  withPermission(['admin', 'customer'], '/')(ProfileView)
+)
