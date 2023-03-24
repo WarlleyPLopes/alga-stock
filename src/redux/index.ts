@@ -7,10 +7,12 @@ import {
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import thunk, { ThunkAction } from "redux-thunk";
+import Authentication from "./Authentication/Authentication.reducer";
 import Products from "./Products/Products.reducer";
 
 const reducers = combineReducers({
   products: Products,
+  authentication: Authentication,
 });
 
 const persistedReducer = persistReducer(

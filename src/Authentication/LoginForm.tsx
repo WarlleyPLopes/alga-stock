@@ -1,19 +1,31 @@
-import { useState } from 'react'
-import Button from "../shared/Button"
-import Form from "../shared/Form"
-import Input from "../shared/Input"
+// @ts-nocheck
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import Swal from 'sweetalert2'
+import Button from '../../shared/Button'
+import Form from '../../shared/Form'
+import Input from '../../shared/Input'
 
 const LoginForm = () => {
+  const dispatch = useDispatch()
   const [form, setForm] = useState({
     user: '',
     pass: ''
   })
 
-  const handleLogin = () => {
-    console.log(form)
+  const handleLogin = async () => {
+    try {
+      await dispatch(login(form))
+    } catch (err) {
+      Swal.fire(
+        'Error',
+        err.response?.data?.message || err.message,
+        'error'
+      )
+    }
   }
 
-  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target
 
     setForm({
@@ -28,7 +40,7 @@ const LoginForm = () => {
       name="user"
       value={form.user}
       onChange={handleInputChange}
-      placeholder="E.g.: your-user-name123"
+      placeholder="E.g.: your_user_name321"
     />
     <Input
       type="password"
@@ -42,4 +54,5 @@ const LoginForm = () => {
     </Button>
   </Form>
 }
+
 export default LoginForm
